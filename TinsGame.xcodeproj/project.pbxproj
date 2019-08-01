@@ -12,8 +12,8 @@
 		8E11A36322E860670057668E /* SKSpriteNode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11A36222E860670057668E /* SKSpriteNode_Extension.swift */; };
 		8E11A36622E879500057668E /* Encounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11A36522E879500057668E /* Encounter.swift */; };
 		8E170F4F22E93315005524E8 /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E170F4D22E93315005524E8 /* Tiles.sks */; };
-		8E170F5422E936B4005524E8 /* MapScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E170F5322E936B4005524E8 /* MapScene.sks */; };
-		8E170F5822E93E9E005524E8 /* MapScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E170F5722E93E9E005524E8 /* MapScene.swift */; };
+		8E170F5422E936B4005524E8 /* HomeTownLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E170F5322E936B4005524E8 /* HomeTownLayout.sks */; };
+		8E170F5822E93E9E005524E8 /* HomeTownScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E170F5722E93E9E005524E8 /* HomeTownScene.swift */; };
 		8E50FAEB22EC7DBA00778138 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAEA22EC7DBA00778138 /* Constants.swift */; };
 		8E50FAEE22EECC8700778138 /* TextLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAED22EECC8700778138 /* TextLabelNode.swift */; };
 		8E50FAF022EED1F800778138 /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAEF22EED1F800778138 /* HealthBar.swift */; };
@@ -26,10 +26,13 @@
 		8E50FAFF22F05C8700778138 /* json.json in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAFE22F05C8700778138 /* json.json */; };
 		8E50FB0022F05CDA00778138 /* json.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FAFE22F05C8700778138 /* json.json */; };
 		8E50FB0222F10EBA00778138 /* CollisionResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0122F10EBA00778138 /* CollisionResolver.swift */; };
-		8E50FB0522F11C8700778138 /* HouseInteriorLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB0422F11C8700778138 /* HouseInteriorLayout.sks */; };
-		8E50FB0922F11F6200778138 /* HouseInteriorScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0822F11F6200778138 /* HouseInteriorScene.swift */; };
+		8E50FB0522F11C8700778138 /* HouseSceneLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB0422F11C8700778138 /* HouseSceneLayout.sks */; };
 		8E50FB0B22F13A2500778138 /* CharacterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0A22F13A2500778138 /* CharacterSprite.swift */; };
 		8E50FB0D22F1478E00778138 /* NPCSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0C22F1478E00778138 /* NPCSprite.swift */; };
+		8E50FB0F22F1BFC800778138 /* BaseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0E22F1BFC800778138 /* BaseScene.swift */; };
+		8E50FB1122F2724400778138 /* HouseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB1022F2724400778138 /* HouseScene.swift */; };
+		8E50FB1322F2EF1800778138 /* ViridianForestLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB1222F2EF1800778138 /* ViridianForestLayout.sks */; };
+		8E50FB1522F2F91300778138 /* ViridianForestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB1422F2F91300778138 /* ViridianForestScene.swift */; };
 		8E89E90522E68CBF00CF9476 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89E90422E68CBF00CF9476 /* Chain.swift */; };
 		8E89E90B22E7F53300CF9476 /* OrbMovement.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E89E90A22E7F53300CF9476 /* OrbMovement.wav */; };
 		8E89E90D22E8134E00CF9476 /* GameSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89E90C22E8134E00CF9476 /* GameSound.swift */; };
@@ -63,8 +66,8 @@
 		8E11A36222E860670057668E /* SKSpriteNode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNode_Extension.swift; sourceTree = "<group>"; };
 		8E11A36522E879500057668E /* Encounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Encounter.swift; sourceTree = "<group>"; };
 		8E170F4D22E93315005524E8 /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles.sks; sourceTree = "<group>"; };
-		8E170F5322E936B4005524E8 /* MapScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = MapScene.sks; sourceTree = "<group>"; };
-		8E170F5722E93E9E005524E8 /* MapScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScene.swift; sourceTree = "<group>"; };
+		8E170F5322E936B4005524E8 /* HomeTownLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeTownLayout.sks; sourceTree = "<group>"; };
+		8E170F5722E93E9E005524E8 /* HomeTownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTownScene.swift; sourceTree = "<group>"; };
 		8E50FAEA22EC7DBA00778138 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E50FAED22EECC8700778138 /* TextLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelNode.swift; sourceTree = "<group>"; };
 		8E50FAEF22EED1F800778138 /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
@@ -75,10 +78,13 @@
 		8E50FAFB22F0378C00778138 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
 		8E50FAFE22F05C8700778138 /* json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = json.json; sourceTree = "<group>"; };
 		8E50FB0122F10EBA00778138 /* CollisionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionResolver.swift; sourceTree = "<group>"; };
-		8E50FB0422F11C8700778138 /* HouseInteriorLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HouseInteriorLayout.sks; sourceTree = "<group>"; };
-		8E50FB0822F11F6200778138 /* HouseInteriorScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseInteriorScene.swift; sourceTree = "<group>"; };
+		8E50FB0422F11C8700778138 /* HouseSceneLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HouseSceneLayout.sks; sourceTree = "<group>"; };
 		8E50FB0A22F13A2500778138 /* CharacterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSprite.swift; sourceTree = "<group>"; };
 		8E50FB0C22F1478E00778138 /* NPCSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPCSprite.swift; sourceTree = "<group>"; };
+		8E50FB0E22F1BFC800778138 /* BaseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseScene.swift; sourceTree = "<group>"; };
+		8E50FB1022F2724400778138 /* HouseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseScene.swift; sourceTree = "<group>"; };
+		8E50FB1222F2EF1800778138 /* ViridianForestLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ViridianForestLayout.sks; sourceTree = "<group>"; };
+		8E50FB1422F2F91300778138 /* ViridianForestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViridianForestScene.swift; sourceTree = "<group>"; };
 		8E89E90422E68CBF00CF9476 /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		8E89E90A22E7F53300CF9476 /* OrbMovement.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = OrbMovement.wav; sourceTree = "<group>"; };
 		8E89E90C22E8134E00CF9476 /* GameSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSound.swift; sourceTree = "<group>"; };
@@ -137,21 +143,26 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		8E170F4C22E932DA005524E8 /* Maps */ = {
+		8E170F4C22E932DA005524E8 /* Tile Definitions */ = {
 			isa = PBXGroup;
 			children = (
 				8E170F4D22E93315005524E8 /* Tiles.sks */,
 			);
-			path = Maps;
+			path = "Tile Definitions";
 			sourceTree = "<group>";
 		};
 		8E170F5522E936D1005524E8 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				8E50FB0E22F1BFC800778138 /* BaseScene.swift */,
 				8E98738222E48445003AA95A /* BattleScene.swift */,
-				8E50FB0822F11F6200778138 /* HouseInteriorScene.swift */,
-				8E170F5722E93E9E005524E8 /* MapScene.swift */,
-				8E50FB0322F119FF00778138 /* MapLayouts */,
+				8E50FB1022F2724400778138 /* HouseScene.swift */,
+				8E50FB0422F11C8700778138 /* HouseSceneLayout.sks */,
+				8E170F5722E93E9E005524E8 /* HomeTownScene.swift */,
+				8E170F5322E936B4005524E8 /* HomeTownLayout.sks */,
+				8E50FB1422F2F91300778138 /* ViridianForestScene.swift */,
+				8E50FB1222F2EF1800778138 /* ViridianForestLayout.sks */,
+				8E50FB0322F119FF00778138 /* GameLogic */,
 				8E50FB0122F10EBA00778138 /* CollisionResolver.swift */,
 			);
 			path = Scenes;
@@ -196,13 +207,11 @@
 			path = MapData;
 			sourceTree = "<group>";
 		};
-		8E50FB0322F119FF00778138 /* MapLayouts */ = {
+		8E50FB0322F119FF00778138 /* GameLogic */ = {
 			isa = PBXGroup;
 			children = (
-				8E170F5322E936B4005524E8 /* MapScene.sks */,
-				8E50FB0422F11C8700778138 /* HouseInteriorLayout.sks */,
 			);
-			path = MapLayouts;
+			path = GameLogic;
 			sourceTree = "<group>";
 		};
 		8E89E90622E7F3FB00CF9476 /* Sounds */ = {
@@ -255,7 +264,7 @@
 			children = (
 				8E98737C22E48445003AA95A /* AppDelegate.swift */,
 				8E50FAF622F02D1700778138 /* MapData */,
-				8E170F4C22E932DA005524E8 /* Maps */,
+				8E170F4C22E932DA005524E8 /* Tile Definitions */,
 				8E11A36422E878E30057668E /* Assets */,
 				8E50FAEC22EECC5100778138 /* Views */,
 				8E170F5522E936D1005524E8 /* Scenes */,
@@ -354,13 +363,14 @@
 				8E50FB0022F05CDA00778138 /* json.json in Resources */,
 				8E50FAFD22F03D3300778138 /* map.json in Resources */,
 				8E89E91E22E813E000CF9476 /* ComboSound9.wav in Resources */,
-				8E170F5422E936B4005524E8 /* MapScene.sks in Resources */,
-				8E50FB0522F11C8700778138 /* HouseInteriorLayout.sks in Resources */,
+				8E170F5422E936B4005524E8 /* HomeTownLayout.sks in Resources */,
+				8E50FB0522F11C8700778138 /* HouseSceneLayout.sks in Resources */,
 				8E89E91F22E813E000CF9476 /* ComboSound10.wav in Resources */,
 				8E89E91B22E813E000CF9476 /* ComboSound2.wav in Resources */,
 				8E98738822E48445003AA95A /* Main.storyboard in Resources */,
 				8E89E92022E813E000CF9476 /* ComboSound12.wav in Resources */,
 				8E89E91A22E813E000CF9476 /* ComboSound3.wav in Resources */,
+				8E50FB1322F2EF1800778138 /* ViridianForestLayout.sks in Resources */,
 				8E89E92422E813E000CF9476 /* ComboSound6.wav in Resources */,
 				8E89E91D22E813E000CF9476 /* ComboSound8.wav in Resources */,
 				8E89E90B22E7F53300CF9476 /* OrbMovement.wav in Resources */,
@@ -384,10 +394,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				8E98739F22E59238003AA95A /* Level.swift in Sources */,
-				8E50FB0922F11F6200778138 /* HouseInteriorScene.swift in Sources */,
+				8E50FB1122F2724400778138 /* HouseScene.swift in Sources */,
+				8E50FB0F22F1BFC800778138 /* BaseScene.swift in Sources */,
 				8E50FB0222F10EBA00778138 /* CollisionResolver.swift in Sources */,
 				8E11A36622E879500057668E /* Encounter.swift in Sources */,
 				8E89E90522E68CBF00CF9476 /* Chain.swift in Sources */,
+				8E50FB1522F2F91300778138 /* ViridianForestScene.swift in Sources */,
 				8E11A36322E860670057668E /* SKSpriteNode_Extension.swift in Sources */,
 				8E9873A122E5B961003AA95A /* Swap.swift in Sources */,
 				8E50FAF022EED1F800778138 /* HealthBar.swift in Sources */,
@@ -399,7 +411,7 @@
 				8E50FB0B22F13A2500778138 /* CharacterSprite.swift in Sources */,
 				8E50FB0D22F1478E00778138 /* NPCSprite.swift in Sources */,
 				8E50FAFF22F05C8700778138 /* json.json in Sources */,
-				8E170F5822E93E9E005524E8 /* MapScene.swift in Sources */,
+				8E170F5822E93E9E005524E8 /* HomeTownScene.swift in Sources */,
 				8E98738522E48445003AA95A /* GameViewController.swift in Sources */,
 				8E11A36022E84A2A0057668E /* Character.swift in Sources */,
 				8E98737D22E48445003AA95A /* AppDelegate.swift in Sources */,

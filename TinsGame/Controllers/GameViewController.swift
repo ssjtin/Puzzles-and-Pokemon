@@ -10,10 +10,30 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-protocol GameSceneDelegate {
+protocol GameSceneDelegate: class {
     func presentBattleScene()
     func removeBattleScene(on view: SKView)
-    func transition(to sceneName: String, from view: SKView)
+    func transition(to sceneName: String, from view: SKView?)
+}
+
+extension GameSceneDelegate {
+    
+    func scene(for sceneName: String) -> BaseScene? {
+        if sceneName.contains("MapScene") {
+            return HomeTownScene(fileNamed: "HomeTownLayout")
+        }
+        
+        if sceneName.contains("house") {
+            return HouseScene(fileNamed: "HouseSceneLayout")
+        }
+        
+        if sceneName == "ViridianForest" {
+            return ViridianForestScene(fileNamed: "ViridianForestLayout")
+        }
+        
+        return nil
+    }
+    
 }
 
 class GameViewController: UIViewController {
@@ -21,7 +41,6 @@ class GameViewController: UIViewController {
     weak var skView: SKView!
     
     var scene: BattleScene?
-    var mapScene: MapScene!
     var isAnimating: Bool = false
 
     var encounter: Encounter!
@@ -39,19 +58,16 @@ class GameViewController: UIViewController {
 //            print(error)
 //        }
 //
-        
-        
-        
         // Configure view
         skView = view as? SKView
         skView.isMultipleTouchEnabled = false
 
         //Load mapScene
-        mapScene = MapScene(fileNamed: "MapScene")
-        mapScene.sceneDelegate = self
+        
+        let scene = HomeTownScene(fileNamed: "HomeTownLayout")!
+        scene.sceneDelegate = self
 
-        skView.showsPhysics = true
-        skView.presentScene(mapScene)
+        skView.presentScene(scene)
 
     }
     
@@ -115,16 +131,18 @@ extension GameViewController: GameSceneDelegate {
     }
     
     func removeBattleScene(on view: SKView) {
-        mapScene = MapScene(fileNamed: "MapScene")
-        mapScene.sceneDelegate = self
+        let scene = HomeTownScene(fileNamed: "HomeTownLayout")!
+        scene.sceneDelegate = self
         let transition = SKTransition.fade(withDuration: 1)
-        view.presentScene(mapScene, transition: transition)
+        view.presentScene(scene, transition: transition)
     }
     
-    func transition(to sceneName: String, from view: SKView) {
-        let newScene = HouseInteriorScene(fileNamed: "HouseInteriorLayout")!
-        let transition = SKTransition.crossFade(withDuration: 1)
-        view.presentScene(newScene, transition: transition)
+    func transition(to sceneName: String, from view: SKView?) {
+        if let newScene = scene(for: sceneName) {
+            newScene.sceneDelegate = self
+            let transition = SKTransition.crossFade(withDuration: 1)
+            view?.presentScene(newScene, transition: transition)
+        }
         
     }
     

@@ -1,40 +1,30 @@
-//
-//  MapScene.swift
+ //
+//  BaseScene.swift
 //  TinsGame
 //
-//  Created by Hoang Luong on 25/7/19.
+//  Created by Hoang Luong on 31/7/19.
 //  Copyright © 2019 Hoang Luong. All rights reserved.
 //
 
-import UIKit
-import SpriteKit
+ import SpriteKit
+ 
+ class BaseScene: SKScene {
 
-class MapScene: SKScene {
-    
-    var sceneDelegate: GameSceneDelegate?
-    
-    var tilemap: SKTileMapNode!
-    var sprite: SKSpriteNode!
-    
+    weak var sceneDelegate: GameSceneDelegate?       //Handles presenting scenes
+    var tilemap: SKTileMapNode!                 //Reference to base tile map
+    var sprite = CharacterSprite()          //Reference to player sprite
     let sceneCamera = SKCameraNode()
-    let collisionResolver = CollisionResolver()
-    
-    let characterAtlas = SKTextureAtlas(named: "Character")
-    
+    let collisionResolver = CollisionResolver()  //Evaluates what happens at specific map tile
     let dpad = DirectionPad()
     
-    private var characterWalkingFrames: [SKTexture] = []
-    
     override func didMove(to view: SKView) {
-        
-        if let grassBackground = childNode(withName: "area-1") as? SKTileMapNode {
-            tilemap = grassBackground
+
+        if let mainTileMap = childNode(withName: "BaseTileMap") as? SKTileMapNode {
+            tilemap = mainTileMap
         }
+        addChild(sprite)
         
-        if let character = childNode(withName: "character") as? SKSpriteNode {
-            sprite = character
-        }
-        
+        sprite.position = tilemap.centerOfTile(atColumn: 1, row: 1)
         configureCamera()
         configureDirectionPad()
     }
@@ -43,18 +33,17 @@ class MapScene: SKScene {
         print("deallocating map")
     }
     
+    //Add skCamera to scene and configure it to keep character sprite in center of screen
     private func configureCamera() {
         self.camera = sceneCamera
         addChild(sceneCamera)
         let zeroRange = SKRange(constantValue: 0.0)
         let playerSpriteConstraint = SKConstraint.distance(zeroRange, to: sprite)
-        
         sceneCamera.constraints = [playerSpriteConstraint]
     }
     
     private func configureDirectionPad() {
         sceneCamera.addChild(dpad)
-        
         dpad.position = CGPoint(x: -size.width/2 * 0.65, y: -size.height/5)
     }
     
@@ -62,7 +51,6 @@ class MapScene: SKScene {
         
         guard let touch = touches.first else { return }
         let location = touch.location(in: dpad)
-        
         let direction = dpad.direction(from: location)
         
         guard direction != .None else { return }
@@ -88,65 +76,54 @@ class MapScene: SKScene {
     
     func moveCharacter() {
         
-        if sprite.action(forKey: "moving") != nil { return }
+        if sprite.action(forKey: "movingCharacter") != nil { return }        //Return if currently moving sprite
         
         let location = sprite.position
         var row = tilemap.tileRowIndex(fromPosition: location)
         var column = tilemap.tileColumnIndex(fromPosition: location)
         
-        var walkFrames = [SKTexture]()
-        var spriteString = ""
-        
-        switch movingDirection {
-            
-        case .Up:   row += 1; spriteString = "walk_up_"
-        case .Down: row -= 1; spriteString = "walk_down_"
-        case .Left: column -= 1; spriteString = "walk_left_"
-        case .Right: column += 1; spriteString = "walk_right_"
-        default: return
-            
+        if movingDirection == .Left {
+            column -= 1
+        } else if movingDirection == .Right {
+            column += 1
+        } else if movingDirection == .Up {
+            row += 1
+        } else if movingDirection == .Down {
+            row -= 1
         }
         
         let destination = tilemap.centerOfTile(atColumn: column, row: row)
-        let moveAction = SKAction.move(to: destination, duration: 0.3)
         
-        
-        for i in 1...3 {
-            let sprite = spriteString + String(i)
-            walkFrames.append(characterAtlas.textureNamed(sprite))
-        }
-        let walkAnimation = SKAction.animate(with: walkFrames, timePerFrame: 0.1, resize: false, restore: false)
-        let nextTilePosition = tilemap.centerOfTile(atColumn: column, row: row)
-        let nodeNames = self.nodes(at: nextTilePosition).map { $0.name }
-        
-        let movementResult = collisionResolver.resultMovingToTile(containing: nodeNames)
+        let nodes = self.nodes(at: destination)
+        let movementResult = collisionResolver.resultMovingToTile(atCol: column, row: row, containing: nodes)
         
         switch movementResult.0 {
         case .Advance:
             //Move sprite to next tile
-            let group = SKAction.group([walkAnimation, moveAction])
-            let completion = SKAction.run {
-                if self.movingDirection != .None {
-                    self.sprite.removeAllActions()
-                    self.moveCharacter()
-                }
+            sprite.animateMoving(to: destination, in: movingDirection) { [unowned self] in
+                //Check for events before allowing further movement
                 if let node = self.nodes(at: self.sprite.position).first(where: { ($0.name ?? "").contains("wildgrass") }) {
                     self.handlePossibleEncounter(at: node.name!)
+                    
+                } else if self.movingDirection != .None {
+                    self.moveCharacter()
                 }
+                
             }
-            let sequence = SKAction.sequence([group, completion])
-            sprite.run(sequence, withKey: "moving")
-            
+                
         case .OutOfBounds:
             // Blocked tile, show only sprite walking animation without advancing
-            sprite.run(walkAnimation)
-            
-            
-        case .Transport:
-            sprite.run(walkAnimation) {
-                self.handleTransition(to: movementResult.1)
+            sprite.animateShuffleFootsteps(in: movingDirection) { [unowned self] in
+                if self.movingDirection != .None {
+                    self.moveCharacter()
+                }
             }
-            print(movementResult.1)
+        case .Transport:
+            sprite.animateShuffleFootsteps(in: movingDirection) { [unowned self] in
+                let sceneName = movementResult.1
+                self.sceneDelegate?.transition(to: sceneName, from: self.view)
+            }
+            
         }
         
     }
@@ -158,7 +135,7 @@ class MapScene: SKScene {
     private func handlePossibleEncounter(at nodeNamed: String) {
         if randomSuccess(withPercentage: 30) {
             sceneDelegate?.presentBattleScene()
-   
+            
         }
     }
     
@@ -170,4 +147,4 @@ class MapScene: SKScene {
         return false
     }
     
-}
+ }

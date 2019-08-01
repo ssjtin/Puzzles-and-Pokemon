@@ -20,3 +20,5 @@ let characterWindowWidth: CGFloat = 80.0
 let healthBarheight: CGFloat = 15.0
 
 let directionPadWidth: CGFloat = 200.0
+
+let stepDuration: TimeInterval = 0.3
