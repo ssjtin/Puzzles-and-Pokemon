@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8E0FFCF522FA3B340056A6BF /* Maps.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8E0FFCF422FA3B340056A6BF /* Maps.plist */; };
+		8E0FFCF722FA3E350056A6BF /* GameData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FFCF622FA3E350056A6BF /* GameData.swift */; };
+		8E0FFCF922FC14020056A6BF /* ItemSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E0FFCF822FC14020056A6BF /* ItemSprite.swift */; };
+		8E0FFCFB22FC1BF30056A6BF /* Obstruction.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E0FFCFA22FC1BF30056A6BF /* Obstruction.mp3 */; };
 		8E11A35E22E8202F0057668E /* TPASound.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E11A35D22E8202F0057668E /* TPASound.wav */; };
 		8E11A36022E84A2A0057668E /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11A35F22E84A2A0057668E /* Character.swift */; };
 		8E11A36322E860670057668E /* SKSpriteNode_Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E11A36222E860670057668E /* SKSpriteNode_Extension.swift */; };
@@ -14,18 +18,15 @@
 		8E170F4F22E93315005524E8 /* Tiles.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E170F4D22E93315005524E8 /* Tiles.sks */; };
 		8E170F5422E936B4005524E8 /* HomeTownLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E170F5322E936B4005524E8 /* HomeTownLayout.sks */; };
 		8E170F5822E93E9E005524E8 /* HomeTownScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E170F5722E93E9E005524E8 /* HomeTownScene.swift */; };
+		8E45633522F86CF300629EA3 /* PlayerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E45633422F86CF300629EA3 /* PlayerData.swift */; };
 		8E50FAEB22EC7DBA00778138 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAEA22EC7DBA00778138 /* Constants.swift */; };
 		8E50FAEE22EECC8700778138 /* TextLabelNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAED22EECC8700778138 /* TextLabelNode.swift */; };
 		8E50FAF022EED1F800778138 /* HealthBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAEF22EED1F800778138 /* HealthBar.swift */; };
 		8E50FAF222EEFD0C00778138 /* DirectionPad.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAF122EEFD0C00778138 /* DirectionPad.swift */; };
 		8E50FAF522F0186700778138 /* GameState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAF422F0186700778138 /* GameState.swift */; };
 		8E50FAF822F02D4900778138 /* map.json in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAF722F02D4900778138 /* map.json */; };
-		8E50FAFA22F036E400778138 /* MapConstructor in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAF922F036E400778138 /* MapConstructor */; };
 		8E50FAFC22F0378C00778138 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAFB22F0378C00778138 /* MapModel.swift */; };
-		8E50FAFD22F03D3300778138 /* map.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FAF722F02D4900778138 /* map.json */; };
-		8E50FAFF22F05C8700778138 /* json.json in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FAFE22F05C8700778138 /* json.json */; };
-		8E50FB0022F05CDA00778138 /* json.json in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FAFE22F05C8700778138 /* json.json */; };
-		8E50FB0222F10EBA00778138 /* CollisionResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0122F10EBA00778138 /* CollisionResolver.swift */; };
+		8E50FB0222F10EBA00778138 /* CollisionDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0122F10EBA00778138 /* CollisionDetector.swift */; };
 		8E50FB0522F11C8700778138 /* HouseSceneLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB0422F11C8700778138 /* HouseSceneLayout.sks */; };
 		8E50FB0B22F13A2500778138 /* CharacterSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0A22F13A2500778138 /* CharacterSprite.swift */; };
 		8E50FB0D22F1478E00778138 /* NPCSprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB0C22F1478E00778138 /* NPCSprite.swift */; };
@@ -33,6 +34,8 @@
 		8E50FB1122F2724400778138 /* HouseScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB1022F2724400778138 /* HouseScene.swift */; };
 		8E50FB1322F2EF1800778138 /* ViridianForestLayout.sks in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB1222F2EF1800778138 /* ViridianForestLayout.sks */; };
 		8E50FB1522F2F91300778138 /* ViridianForestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E50FB1422F2F91300778138 /* ViridianForestScene.swift */; };
+		8E50FB1722F5B45900778138 /* Pallet Town Theme.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB1622F5B45900778138 /* Pallet Town Theme.mp3 */; };
+		8E50FB1A22F5B70C00778138 /* Wild Pokemon.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8E50FB1922F5B70C00778138 /* Wild Pokemon.mp3 */; };
 		8E89E90522E68CBF00CF9476 /* Chain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89E90422E68CBF00CF9476 /* Chain.swift */; };
 		8E89E90B22E7F53300CF9476 /* OrbMovement.wav in Resources */ = {isa = PBXBuildFile; fileRef = 8E89E90A22E7F53300CF9476 /* OrbMovement.wav */; };
 		8E89E90D22E8134E00CF9476 /* GameSound.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E89E90C22E8134E00CF9476 /* GameSound.swift */; };
@@ -58,9 +61,17 @@
 		8E98739C22E591B6003AA95A /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98739B22E591B6003AA95A /* Array2D.swift */; };
 		8E98739F22E59238003AA95A /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98739E22E59238003AA95A /* Level.swift */; };
 		8E9873A122E5B961003AA95A /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9873A022E5B961003AA95A /* Swap.swift */; };
+		8EFD651D22F7E66200087FC9 /* EnemySprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD651C22F7E66200087FC9 /* EnemySprite.swift */; };
+		8EFD651F22F7ECD200087FC9 /* MonstersHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD651E22F7ECD200087FC9 /* MonstersHud.swift */; };
+		8EFD652122F82C4600087FC9 /* Pokemon encounter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD652022F82C4600087FC9 /* Pokemon encounter.mp3 */; };
+		8EFD652322F82C4C00087FC9 /* Wild encounter song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD652222F82C4C00087FC9 /* Wild encounter song.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8E0FFCF422FA3B340056A6BF /* Maps.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Maps.plist; sourceTree = "<group>"; };
+		8E0FFCF622FA3E350056A6BF /* GameData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameData.swift; sourceTree = "<group>"; };
+		8E0FFCF822FC14020056A6BF /* ItemSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSprite.swift; sourceTree = "<group>"; };
+		8E0FFCFA22FC1BF30056A6BF /* Obstruction.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Obstruction.mp3; sourceTree = "<group>"; };
 		8E11A35D22E8202F0057668E /* TPASound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = TPASound.wav; sourceTree = "<group>"; };
 		8E11A35F22E84A2A0057668E /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		8E11A36222E860670057668E /* SKSpriteNode_Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SKSpriteNode_Extension.swift; sourceTree = "<group>"; };
@@ -68,16 +79,15 @@
 		8E170F4D22E93315005524E8 /* Tiles.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = Tiles.sks; sourceTree = "<group>"; };
 		8E170F5322E936B4005524E8 /* HomeTownLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HomeTownLayout.sks; sourceTree = "<group>"; };
 		8E170F5722E93E9E005524E8 /* HomeTownScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTownScene.swift; sourceTree = "<group>"; };
+		8E45633422F86CF300629EA3 /* PlayerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerData.swift; sourceTree = "<group>"; };
 		8E50FAEA22EC7DBA00778138 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		8E50FAED22EECC8700778138 /* TextLabelNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextLabelNode.swift; sourceTree = "<group>"; };
 		8E50FAEF22EED1F800778138 /* HealthBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthBar.swift; sourceTree = "<group>"; };
 		8E50FAF122EEFD0C00778138 /* DirectionPad.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DirectionPad.swift; sourceTree = "<group>"; };
 		8E50FAF422F0186700778138 /* GameState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameState.swift; sourceTree = "<group>"; };
 		8E50FAF722F02D4900778138 /* map.json */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; path = map.json; sourceTree = "<group>"; };
-		8E50FAF922F036E400778138 /* MapConstructor */ = {isa = PBXFileReference; lastKnownFileType = text; path = MapConstructor; sourceTree = "<group>"; };
 		8E50FAFB22F0378C00778138 /* MapModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		8E50FAFE22F05C8700778138 /* json.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = json.json; sourceTree = "<group>"; };
-		8E50FB0122F10EBA00778138 /* CollisionResolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionResolver.swift; sourceTree = "<group>"; };
+		8E50FB0122F10EBA00778138 /* CollisionDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionDetector.swift; sourceTree = "<group>"; };
 		8E50FB0422F11C8700778138 /* HouseSceneLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = HouseSceneLayout.sks; sourceTree = "<group>"; };
 		8E50FB0A22F13A2500778138 /* CharacterSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterSprite.swift; sourceTree = "<group>"; };
 		8E50FB0C22F1478E00778138 /* NPCSprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NPCSprite.swift; sourceTree = "<group>"; };
@@ -85,6 +95,8 @@
 		8E50FB1022F2724400778138 /* HouseScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseScene.swift; sourceTree = "<group>"; };
 		8E50FB1222F2EF1800778138 /* ViridianForestLayout.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = ViridianForestLayout.sks; sourceTree = "<group>"; };
 		8E50FB1422F2F91300778138 /* ViridianForestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViridianForestScene.swift; sourceTree = "<group>"; };
+		8E50FB1622F5B45900778138 /* Pallet Town Theme.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pallet Town Theme.mp3"; sourceTree = "<group>"; };
+		8E50FB1922F5B70C00778138 /* Wild Pokemon.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Wild Pokemon.mp3"; sourceTree = "<group>"; };
 		8E89E90422E68CBF00CF9476 /* Chain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chain.swift; sourceTree = "<group>"; };
 		8E89E90A22E7F53300CF9476 /* OrbMovement.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = OrbMovement.wav; sourceTree = "<group>"; };
 		8E89E90C22E8134E00CF9476 /* GameSound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSound.swift; sourceTree = "<group>"; };
@@ -112,6 +124,10 @@
 		8E98739B22E591B6003AA95A /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		8E98739E22E59238003AA95A /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		8E9873A022E5B961003AA95A /* Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
+		8EFD651C22F7E66200087FC9 /* EnemySprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemySprite.swift; sourceTree = "<group>"; };
+		8EFD651E22F7ECD200087FC9 /* MonstersHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonstersHud.swift; sourceTree = "<group>"; };
+		8EFD652022F82C4600087FC9 /* Pokemon encounter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pokemon encounter.mp3"; sourceTree = "<group>"; };
+		8EFD652222F82C4C00087FC9 /* Wild encounter song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Wild encounter song.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,7 +179,6 @@
 				8E50FB1422F2F91300778138 /* ViridianForestScene.swift */,
 				8E50FB1222F2EF1800778138 /* ViridianForestLayout.sks */,
 				8E50FB0322F119FF00778138 /* GameLogic */,
-				8E50FB0122F10EBA00778138 /* CollisionResolver.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -181,9 +196,12 @@
 			children = (
 				8E50FAED22EECC8700778138 /* TextLabelNode.swift */,
 				8E50FAEF22EED1F800778138 /* HealthBar.swift */,
+				8EFD651C22F7E66200087FC9 /* EnemySprite.swift */,
+				8EFD651E22F7ECD200087FC9 /* MonstersHud.swift */,
 				8E50FAF122EEFD0C00778138 /* DirectionPad.swift */,
 				8E50FB0A22F13A2500778138 /* CharacterSprite.swift */,
 				8E50FB0C22F1478E00778138 /* NPCSprite.swift */,
+				8E0FFCF822FC14020056A6BF /* ItemSprite.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -201,8 +219,8 @@
 			children = (
 				8E50FAF722F02D4900778138 /* map.json */,
 				8E50FAFB22F0378C00778138 /* MapModel.swift */,
-				8E50FAF922F036E400778138 /* MapConstructor */,
-				8E50FAFE22F05C8700778138 /* json.json */,
+				8E0FFCF422FA3B340056A6BF /* Maps.plist */,
+				8E0FFCF622FA3E350056A6BF /* GameData.swift */,
 			);
 			path = MapData;
 			sourceTree = "<group>";
@@ -210,13 +228,29 @@
 		8E50FB0322F119FF00778138 /* GameLogic */ = {
 			isa = PBXGroup;
 			children = (
+				8E11A36522E879500057668E /* Encounter.swift */,
+				8E50FB0122F10EBA00778138 /* CollisionDetector.swift */,
+				8E98739E22E59238003AA95A /* Level.swift */,
 			);
 			path = GameLogic;
+			sourceTree = "<group>";
+		};
+		8E50FB1822F5B46700778138 /* BGM */ = {
+			isa = PBXGroup;
+			children = (
+				8E50FB1622F5B45900778138 /* Pallet Town Theme.mp3 */,
+				8EFD652222F82C4C00087FC9 /* Wild encounter song.mp3 */,
+				8EFD652022F82C4600087FC9 /* Pokemon encounter.mp3 */,
+				8E50FB1922F5B70C00778138 /* Wild Pokemon.mp3 */,
+				8E0FFCFA22FC1BF30056A6BF /* Obstruction.mp3 */,
+			);
+			path = BGM;
 			sourceTree = "<group>";
 		};
 		8E89E90622E7F3FB00CF9476 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				8E50FB1822F5B46700778138 /* BGM */,
 				8E89E90722E7F40700CF9476 /* GameSounds */,
 			);
 			path = Sounds;
@@ -263,14 +297,13 @@
 			isa = PBXGroup;
 			children = (
 				8E98737C22E48445003AA95A /* AppDelegate.swift */,
+				8EFD652422F86C9500087FC9 /* PlayerData */,
 				8E50FAF622F02D1700778138 /* MapData */,
 				8E170F4C22E932DA005524E8 /* Tile Definitions */,
 				8E11A36422E878E30057668E /* Assets */,
 				8E50FAEC22EECC5100778138 /* Views */,
 				8E170F5522E936D1005524E8 /* Scenes */,
 				8E170F5622E93703005524E8 /* Controllers */,
-				8E98739E22E59238003AA95A /* Level.swift */,
-				8E11A36522E879500057668E /* Encounter.swift */,
 				8E50FAF322F0185500778138 /* GameState */,
 				8E98739D22E59222003AA95A /* Helpers */,
 				8E98739822E59008003AA95A /* Models */,
@@ -300,6 +333,14 @@
 				8E11A36222E860670057668E /* SKSpriteNode_Extension.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8EFD652422F86C9500087FC9 /* PlayerData */ = {
+			isa = PBXGroup;
+			children = (
+				8E45633422F86CF300629EA3 /* PlayerData.swift */,
+			);
+			path = PlayerData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -360,18 +401,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8E50FB0022F05CDA00778138 /* json.json in Resources */,
-				8E50FAFD22F03D3300778138 /* map.json in Resources */,
 				8E89E91E22E813E000CF9476 /* ComboSound9.wav in Resources */,
+				8E50FB1A22F5B70C00778138 /* Wild Pokemon.mp3 in Resources */,
 				8E170F5422E936B4005524E8 /* HomeTownLayout.sks in Resources */,
 				8E50FB0522F11C8700778138 /* HouseSceneLayout.sks in Resources */,
 				8E89E91F22E813E000CF9476 /* ComboSound10.wav in Resources */,
 				8E89E91B22E813E000CF9476 /* ComboSound2.wav in Resources */,
 				8E98738822E48445003AA95A /* Main.storyboard in Resources */,
+				8EFD652122F82C4600087FC9 /* Pokemon encounter.mp3 in Resources */,
 				8E89E92022E813E000CF9476 /* ComboSound12.wav in Resources */,
 				8E89E91A22E813E000CF9476 /* ComboSound3.wav in Resources */,
 				8E50FB1322F2EF1800778138 /* ViridianForestLayout.sks in Resources */,
+				8E0FFCF522FA3B340056A6BF /* Maps.plist in Resources */,
 				8E89E92422E813E000CF9476 /* ComboSound6.wav in Resources */,
+				8EFD652322F82C4C00087FC9 /* Wild encounter song.mp3 in Resources */,
+				8E50FB1722F5B45900778138 /* Pallet Town Theme.mp3 in Resources */,
 				8E89E91D22E813E000CF9476 /* ComboSound8.wav in Resources */,
 				8E89E90B22E7F53300CF9476 /* OrbMovement.wav in Resources */,
 				8E11A35E22E8202F0057668E /* TPASound.wav in Resources */,
@@ -379,6 +423,7 @@
 				8E89E92222E813E000CF9476 /* ComboSound11.wav in Resources */,
 				8E98738A22E48448003AA95A /* Assets.xcassets in Resources */,
 				8E89E92122E813E000CF9476 /* ComboSound1.wav in Resources */,
+				8E0FFCFB22FC1BF30056A6BF /* Obstruction.mp3 in Resources */,
 				8E98738D22E48448003AA95A /* LaunchScreen.storyboard in Resources */,
 				8E170F4F22E93315005524E8 /* Tiles.sks in Resources */,
 				8E89E92322E813E000CF9476 /* ComboSound4.wav in Resources */,
@@ -396,26 +441,29 @@
 				8E98739F22E59238003AA95A /* Level.swift in Sources */,
 				8E50FB1122F2724400778138 /* HouseScene.swift in Sources */,
 				8E50FB0F22F1BFC800778138 /* BaseScene.swift in Sources */,
-				8E50FB0222F10EBA00778138 /* CollisionResolver.swift in Sources */,
+				8E50FB0222F10EBA00778138 /* CollisionDetector.swift in Sources */,
 				8E11A36622E879500057668E /* Encounter.swift in Sources */,
 				8E89E90522E68CBF00CF9476 /* Chain.swift in Sources */,
+				8E0FFCF922FC14020056A6BF /* ItemSprite.swift in Sources */,
 				8E50FB1522F2F91300778138 /* ViridianForestScene.swift in Sources */,
 				8E11A36322E860670057668E /* SKSpriteNode_Extension.swift in Sources */,
 				8E9873A122E5B961003AA95A /* Swap.swift in Sources */,
 				8E50FAF022EED1F800778138 /* HealthBar.swift in Sources */,
 				8E50FAFC22F0378C00778138 /* MapModel.swift in Sources */,
-				8E50FAFA22F036E400778138 /* MapConstructor in Sources */,
 				8E89E90D22E8134E00CF9476 /* GameSound.swift in Sources */,
 				8E50FAF222EEFD0C00778138 /* DirectionPad.swift in Sources */,
+				8EFD651D22F7E66200087FC9 /* EnemySprite.swift in Sources */,
 				8E98738322E48445003AA95A /* BattleScene.swift in Sources */,
 				8E50FB0B22F13A2500778138 /* CharacterSprite.swift in Sources */,
 				8E50FB0D22F1478E00778138 /* NPCSprite.swift in Sources */,
-				8E50FAFF22F05C8700778138 /* json.json in Sources */,
+				8E0FFCF722FA3E350056A6BF /* GameData.swift in Sources */,
+				8E45633522F86CF300629EA3 /* PlayerData.swift in Sources */,
 				8E170F5822E93E9E005524E8 /* HomeTownScene.swift in Sources */,
 				8E98738522E48445003AA95A /* GameViewController.swift in Sources */,
 				8E11A36022E84A2A0057668E /* Character.swift in Sources */,
 				8E98737D22E48445003AA95A /* AppDelegate.swift in Sources */,
 				8E50FAEE22EECC8700778138 /* TextLabelNode.swift in Sources */,
+				8EFD651F22F7ECD200087FC9 /* MonstersHud.swift in Sources */,
 				8E50FAF822F02D4900778138 /* map.json in Sources */,
 				8E50FAEB22EC7DBA00778138 /* Constants.swift in Sources */,
 				8E50FAF522F0186700778138 /* GameState.swift in Sources */,

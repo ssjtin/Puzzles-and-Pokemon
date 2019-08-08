@@ -8,13 +8,10 @@
 
 import UIKit
 import SpriteKit
+import AVFoundation
 
 class HomeTownScene: BaseScene {
+
     
-    override func didMove(to view: SKView) {
-        super.didMove(to: view)
-        
-        sprite.position = tilemap.centerOfTile(atColumn: 10, row: 15)
-    }
     
 }

@@ -1,0 +1,35 @@
+{
+   "name":"map1",
+   "encounterAreas":[
+      {
+         "name":"wild_grass1",
+         "rate":20,
+         "monsters":[
+            "charizard",
+            "pikachu"
+         ]
+      },
+      {
+         "name":"wild_grass2",
+         "rate":20,
+         "monsters":[
+            "rattata"
+         ]
+      }
+   ],
+   "trainers":[
+      {
+         "name":"Cooltrainer Blue",
+         "monsters":[
+            {
+               "name":"charizard",
+               "level":25
+            },
+            {
+               "name":"pikachu",
+               "level":25
+            }
+         ]
+      }
+   ]
+}

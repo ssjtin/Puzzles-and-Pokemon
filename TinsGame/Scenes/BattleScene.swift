@@ -13,18 +13,16 @@ import AVFoundation
 class BattleScene: SKScene {
     
     var level = Level()                //Level class controls puzzle orbs
+    let encounter = Encounter()       //Handles enemy, allies, health, and attacks
     let gameSound = GameSound()         //Preload game sounds
     
     var sceneDelegate: GameSceneDelegate?
-    var encounter: Encounter!
-    
+
     //Orb handling logic variables
     var swipedOrbs: [(column: Int, row: Int)] = [] {
         didSet {
             if self.swipedOrbs.count == 1 && isSwiping == false {
-                if let handler = resolveMatchesHandler {
-                    handler()
-                }
+                handleMatches()
             }
         }
     }
@@ -38,45 +36,37 @@ class BattleScene: SKScene {
     
     //Scene layers
     let gameLayer = SKNode()
-    let tilesLayer = SKNode()
-    //Layer that holds the orbs
-    let orbsLayer = SKNode()
     
     //Character and battle layer
     let fightStageLayer = SKNode()
-    let playerCharactersLayer = SKNode()
-    
-    //Health bars
-    let enemyHealthBar = HealthBar(size: CGSize(width: healthBarWidth, height: healthBarheight))
-    let playerHealthBar = HealthBar(size: CGSize(width: healthBarWidth, height: healthBarheight))
-
-    //Text labels
-    let attackLabel = TextLabelNode()
-    
-    //Delegate closures
-    var swipeHandler: ((Swap) -> Void)?
-    var resolveMatchesHandler: (() -> Void)?
+    var playerHud: MonstersHud!
+    var enemyHud: EnemyHud!
     
     override init(size: CGSize) {
         super.init(size: size)
         
         //Set scene anchorPoint to centre of screen
         anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        scaleMode = .aspectFill
+        encounter.battleDelegate = self
+        configureEnemy()
         
         setBackgroundImage()
         configureMainLayers()
-        
-        addTiles()
-        
+
         configureHeroCharacterWindows()
-        configureAttackLabel()
-        
-        let newOrbs = level.shuffle()
-        addSprites(for: newOrbs)
+
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func didMove(to view: SKView) {
+        super.didMove(to: view)
+        
+        let bgm = SKAudioNode(fileNamed: "Wild encounter song.mp3")
+        addChild(bgm)
     }
     
     private func setBackgroundImage() {
@@ -93,83 +83,24 @@ class BattleScene: SKScene {
             y: -tileHeight*2.5)
         //Add child layers to parents
         addChild(gameLayer)
-        orbsLayer.position = layerPosition
-        tilesLayer.position = layerPosition
-        gameLayer.addChild(tilesLayer)
-        gameLayer.addChild(orbsLayer)
+        level.puzzleNode.position = layerPosition
+        gameLayer.addChild(level.puzzleNode)
         
         //Configure character stage position
         let stagePosition = CGPoint(x: -size.width/4, y: 0)
         fightStageLayer.position = stagePosition
         gameLayer.addChild(fightStageLayer)
-        fightStageLayer.addChild(playerCharactersLayer)
     }
     
     private func configureHeroCharacterWindows() {
-        
-        playerHealthBar.position = CGPoint(x: -40, y: -75)
-        fightStageLayer.addChild(playerHealthBar)
-        
-        for num in -1...1 {
-            let size = CGSize(width: characterWindowWidth, height: characterWindowWidth)
-            let position = CGPoint(x: -(characterWindowWidth + 10) * CGFloat(num) - 40 , y: -140)
-            
-            let borderNode = SKSpriteNode(color: .yellow, size: size)
-            borderNode.drawBorder(color: .blue, width: 2)
-            borderNode.position = position
-            
-            let spriteNode = SKSpriteNode(imageNamed: "pikachu-back")
-            spriteNode.size = size
-            spriteNode.position = position
-            
-            playerCharactersLayer.addChild(borderNode)
-            playerCharactersLayer.addChild(spriteNode)
-        }
-    }
-    
-    private func configureAttackLabel() {
-        attackLabel.position = CGPoint(x: 0, y: 170)
-        attackLabel.text = "Burn for a thousand years!!!"
-        fightStageLayer.addChild(attackLabel)
+
+        playerHud = MonstersHud(frameWidth: characterWindowWidth)
+        fightStageLayer.addChild(playerHud)
     }
     
     func configureEnemy() {
-        let enemySprite = SKSpriteNode(imageNamed: encounter.enemyMonsters.baseMonster.images.frontImage!)
-        enemySprite.size = CGSize(width: 250, height: 250)
-        enemySprite.position = CGPoint(x: 100, y: 50)
-        
-        fightStageLayer.addChild(enemySprite)
-        
-        enemyHealthBar.position = CGPoint(x: 100, y: 160)
-        fightStageLayer.addChild(enemyHealthBar)
-    }
-    
-    func addTiles() {
-        for column in 0..<numColumns {
-            for row in 0..<numRows {
-                let tile = SKSpriteNode(imageNamed: "Tile_15")
-                tile.size = CGSize(width: tileWidth, height: tileHeight)
-                tile.position = pointFor(column: column, row: row)
-                tilesLayer.addChild(tile)
-                
-                if (column+row).isMultiple(of: 2) {
-                    tile.alpha = 0.25
-                } else {
-                    tile.alpha = 0.5
-                }
-
-            }
-        }
-    }
-    
-    func addSprites(for orbs: Set<Orb>) {
-        for orb in orbs {
-            let sprite = SKSpriteNode(imageNamed: orb.element.spriteName)
-            sprite.size = CGSize(width: tileWidth, height: tileHeight)
-            sprite.position = pointFor(column: orb.column, row: orb.row)
-            orbsLayer.addChild(sprite)
-            orb.sprite = sprite
-        }
+        enemyHud = EnemyHud(imageNamed: encounter.enemyMonsters.baseMonster.images.frontImage!)
+        fightStageLayer.addChild(enemyHud)
     }
     
     private func pointFor(column: Int, row: Int) -> CGPoint {
@@ -196,7 +127,7 @@ class BattleScene: SKScene {
         swipedOrbs.removeAll()
         isSwiping = true
         
-        let location = touch.location(in: orbsLayer)
+        let location = touch.location(in: level.orbsLayer)
         
         let (success, column, row) = convertPoint(location)
         
@@ -207,7 +138,7 @@ class BattleScene: SKScene {
                 swipedOrbs.append((column, row))
                 activeOrb = SKSpriteNode(imageNamed: orb.element.spriteName)
                 activeOrb?.size = CGSize(width: 65, height: 65)
-                orbsLayer.addChild(activeOrb!)
+                level.orbsLayer.addChild(activeOrb!)
                 activeOrb?.position = location
             }
         }
@@ -219,7 +150,7 @@ class BattleScene: SKScene {
         guard let orb = swipedOrbs.last else { return }
         guard let touch = touches.first else { return }
         
-        let location = touch.location(in: orbsLayer)
+        let location = touch.location(in: level.orbsLayer)
         activeOrb?.position = location
         
         let (success, column, row) = convertPoint(location)
@@ -260,9 +191,7 @@ class BattleScene: SKScene {
         initialOrb = nil
         isSwiping = false
         if swipedOrbs.count == 1 {
-            if let handler = resolveMatchesHandler {
-                handler()
-            }
+            handleMatches()
         }
     }
     
@@ -275,13 +204,47 @@ class BattleScene: SKScene {
         if  let toOrb = level.orb(atColumn: swipedOrbs[1].column, row: swipedOrbs[1].row),
             let fromOrb = level.orb(atColumn: swipedOrbs[0].column, row: swipedOrbs[0].row) {
             
-            if let handler = swipeHandler {
-                let swap = Swap(orbA: fromOrb, orbB: toOrb)
-                handler(swap)
+            let swap = Swap(orbA: fromOrb, orbB: toOrb)
+            handleSwipe(swap)
+
+        }
+    }
+    
+    func handleSwipe(_ swap: Swap) {
+        
+        level.performSwap(swap)
+        animate(swap) { [unowned self] in
+            self.swipedOrbs.remove(at: 0)
+            if self.swipedOrbs.count > 1 {
+                self.trySwap()
             }
         }
     }
     
+    func handleMatches() {
+        
+        func removeMatches(_ chains: Set<Chain>) {
+            level.removeMatches(chains)
+            animateMatchedOrbs(for: chains) {
+                let columns = self.level.fillHoles()
+                self.animateFallingOrbs(in: columns, completion: {
+                    let columns = self.level.topUpOrbs()
+                    self.animateNewOrbs(in: columns, completion: {
+                        if let newChains = self.level.detectMatches() {
+                            removeMatches(newChains)
+                        } else {
+                            self.resolveCombos()
+                        }
+                    })
+                })
+            }
+        }
+        
+        if let chains = level.detectMatches() {
+            removeMatches(chains)
+        }
+        
+    }
     
     //Mark: ANIMATIONS
     
@@ -370,7 +333,7 @@ class BattleScene: SKScene {
                 let sprite = SKSpriteNode(imageNamed: orb.element.spriteName)
                 sprite.size = CGSize(width: tileWidth, height: tileHeight)
                 sprite.position = pointFor(column: orb.column, row: startRow)
-                orbsLayer.addChild(sprite)
+                level.orbsLayer.addChild(sprite)
                 orb.sprite = sprite
                 // 4
                 let delay = 0.1 + 0.2 * TimeInterval(array.count - index - 1)
@@ -409,28 +372,28 @@ extension BattleScene: BattleDelegate {
     
     func animateEnemyAttack(named attack: String, reducingHeroHealthTo health: Float, completion: @escaping () -> ()) {
         //Animate label with attack name
-        attackLabel.text = attack
-        attackLabel.animateFlash(times: 3, duration: 2) {
+        enemyHud.attackLabel.text = attack
+        enemyHud.attackLabel.animateFlash(times: 3, duration: 1) {
             self.animateHeroHealth(reducedTo: health, completion: {
                 completion()
             })
         }
-        
         //Animate enemy sprite
-        
+        enemyHud.animateAttack(by: 20) {
+            
+        }
         //Animate hero health bar
     }
     
     func animateHeroAttack(reducingEnemyHealthTo health: Float, completion: @escaping () -> ()) {
         
-        enemyHealthBar.animateTo(percentage: health) {
+        enemyHud.healthBar.animateTo(percentage: health) {
             completion()
         }
     }
     
-    
     func animateHeroHealth(reducedTo health: Float, completion: @escaping () -> ()) {
-        playerHealthBar.animateTo(percentage: health) {
+        playerHud.healthBar.animateTo(percentage: health) {
             completion()
         }
     }
@@ -452,8 +415,5 @@ extension BattleScene: BattleDelegate {
     func dismissBattleScene() {
         sceneDelegate?.removeBattleScene(on: self.view!)
     }
-    
-    
-    
     
 }

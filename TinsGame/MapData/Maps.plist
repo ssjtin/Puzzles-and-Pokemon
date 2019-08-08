@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>HomeTown</key>
+	<dict>
+		<key>items</key>
+		<array>
+			<dict>
+				<key>spriteName</key>
+				<string>pokeball</string>
+				<key>taken</key>
+				<false/>
+				<key>column</key>
+				<integer>6</integer>
+				<key>name</key>
+				<string>potion</string>
+				<key>row</key>
+				<integer>6</integer>
+			</dict>
+		</array>
+		<key>npc</key>
+		<array>
+			<dict>
+				<key>spriteName</key>
+				<string>mage</string>
+				<key>speech</key>
+				<array>
+					<string>&quot;I&apos;m lonely&quot;</string>
+					<string>&quot;Won&apos;t you play with me?&quot;</string>
+				</array>
+				<key>name</key>
+				<string>cooltrainer1</string>
+				<key>startingRow</key>
+				<integer>5</integer>
+				<key>startingColumn</key>
+				<integer>5</integer>
+			</dict>
+		</array>
+	</dict>
+</dict>
+</plist>

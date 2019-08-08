@@ -10,6 +10,17 @@ import SpriteKit
 
 enum Direction {
     case None, Left, Right, Up, Down
+    
+    static func randomDirection() -> Direction {
+        let random = arc4random_uniform(3)
+        switch random {
+        case 0: return .Left
+        case 1: return .Right
+        case 2: return .Up
+        case 3: return .Down
+        default: return .None
+        }
+    }
 }
 
 class DirectionPad: SKSpriteNode {

@@ -9,28 +9,67 @@
  import SpriteKit
  
  class BaseScene: SKScene {
+    
+    var gameData: GameData!
+    let sounds = MapSound()
 
     weak var sceneDelegate: GameSceneDelegate?       //Handles presenting scenes
     var tilemap: SKTileMapNode!                 //Reference to base tile map
     var sprite = CharacterSprite()          //Reference to player sprite
     let sceneCamera = SKCameraNode()
-    let collisionResolver = CollisionResolver()  //Evaluates what happens at specific map tile
+    let collisionDetector = CollisionDetector()  //Evaluates what happens at specific map tile
     let dpad = DirectionPad()
     
     override func didMove(to view: SKView) {
+        
+        //Decode in-game items and npc's from map property list
+        if let mapName = self.scene?.name {
+            self.gameData = GameData(mapName: mapName)
+        }
 
         if let mainTileMap = childNode(withName: "BaseTileMap") as? SKTileMapNode {
             tilemap = mainTileMap
         }
-        addChild(sprite)
+        tilemap.addChild(sprite)
+        
+        populateMap()
         
         sprite.position = tilemap.centerOfTile(atColumn: 1, row: 1)
         configureCamera()
         configureDirectionPad()
+        
+        let bgm = SKAudioNode(fileNamed: "Pallet Town Theme.mp3")
+        addChild(bgm)
+        
+        sprite.position = tilemap.centerOfTile(atColumn: 10, row: 15)
     }
     
     deinit {
         print("deallocating map")
+    }
+    
+    private func populateMap() {
+        addNPCs()
+        addItems()
+    }
+    
+    private func addNPCs() {
+        let npcs = gameData.mapData.npc
+        for npc in npcs {
+            let sprite = NPCSprite(npc: npc)
+            sprite.position = tilemap.centerOfTile(atColumn: npc.startingColumn, row: npc.startingRow)
+            tilemap.addChild(sprite)
+            sprite.animate()
+        }
+    }
+    
+    private func addItems() {
+        let items = gameData.mapData.items
+        for item in items {
+            let itemSprite = ItemSprite(item: item)
+            itemSprite.position = tilemap.centerOfTile(atColumn: item.column, row: item.row)
+            tilemap.addChild(itemSprite)
+        }
     }
     
     //Add skCamera to scene and configure it to keep character sprite in center of screen
@@ -92,10 +131,8 @@
             row -= 1
         }
         
+        let movementResult = collisionDetector.resultMovingToTile(atCol: column, row: row, on: tilemap)
         let destination = tilemap.centerOfTile(atColumn: column, row: row)
-        
-        let nodes = self.nodes(at: destination)
-        let movementResult = collisionResolver.resultMovingToTile(atCol: column, row: row, containing: nodes)
         
         switch movementResult.0 {
         case .Advance:
@@ -103,9 +140,14 @@
             sprite.animateMoving(to: destination, in: movingDirection) { [unowned self] in
                 //Check for events before allowing further movement
                 if let node = self.nodes(at: self.sprite.position).first(where: { ($0.name ?? "").contains("wildgrass") }) {
-                    self.handlePossibleEncounter(at: node.name!)
-                    
-                } else if self.movingDirection != .None {
+                    if self.randomSuccess(withPercentage: 30) {
+                        self.handleEncounter(at: node.name!)
+                        self.movingDirection = .None
+                        return
+                    }
+                }
+                
+                if self.movingDirection != .None {
                     self.moveCharacter()
                 }
                 
@@ -113,13 +155,14 @@
                 
         case .OutOfBounds:
             // Blocked tile, show only sprite walking animation without advancing
+            run(sounds.bumpSound)
             sprite.animateShuffleFootsteps(in: movingDirection) { [unowned self] in
                 if self.movingDirection != .None {
                     self.moveCharacter()
                 }
             }
         case .Transport:
-            sprite.animateShuffleFootsteps(in: movingDirection) { [unowned self] in
+            sprite.animateMoving(to: destination, in: movingDirection) { [unowned self] in
                 let sceneName = movementResult.1
                 self.sceneDelegate?.transition(to: sceneName, from: self.view)
             }
@@ -132,10 +175,12 @@
         sceneDelegate?.transition(to: sceneNamed, from: self.view!)
     }
     
-    private func handlePossibleEncounter(at nodeNamed: String) {
-        if randomSuccess(withPercentage: 30) {
-            sceneDelegate?.presentBattleScene()
-            
+    private func handleEncounter(at nodeNamed: String) {
+        
+        let encounterSoundEffect = SKAction.playSoundFileNamed("Pokemon encounter.mp3", waitForCompletion: true)
+        
+        run(encounterSoundEffect) {
+            self.sceneDelegate?.presentBattleScene()
         }
     }
     
@@ -143,7 +188,6 @@
         if (arc4random_uniform(100) + 1) <= percentage {
             return true
         }
-        
         return false
     }
     

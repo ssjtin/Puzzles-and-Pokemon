@@ -7,12 +7,60 @@
 //
 //  The level class handles the logic behind population orbs, matching orbs, refilling orbs, etc.
 
+import SpriteKit
+
 let numColumns = 6
 let numRows = 5
 
 class Level {
     
+    let puzzleNode = SKNode()
+    let tilesLayer = SKNode()
+    let orbsLayer = SKNode()
+    
     private var orbs = Array2D<Orb>(columns: numColumns, rows: numRows)
+    
+    init() {
+        addTiles()
+        let newOrbs = shuffle()
+        addSprites(for: newOrbs)
+        puzzleNode.addChild(tilesLayer)
+        puzzleNode.addChild(orbsLayer)
+    }
+    
+    private func pointFor(column: Int, row: Int) -> CGPoint {
+        return CGPoint(
+            x: CGFloat(column) * tileWidth + tileWidth / 2,
+            y: CGFloat(row) * tileHeight + tileHeight / 2)
+    }
+    
+    func addTiles() {
+        for column in 0..<numColumns {
+            for row in 0..<numRows {
+                let tile = SKSpriteNode(imageNamed: "Tile_15")
+                tile.size = CGSize(width: tileWidth, height: tileHeight)
+                tile.position = pointFor(column: column, row: row)
+                tilesLayer.addChild(tile)
+                
+                if (column+row).isMultiple(of: 2) {
+                    tile.alpha = 0.25
+                } else {
+                    tile.alpha = 0.5
+                }
+                
+            }
+        }
+    }
+    
+    func addSprites(for orbs: Set<Orb>) {
+        for orb in orbs {
+            let sprite = SKSpriteNode(imageNamed: orb.element.spriteName)
+            sprite.size = CGSize(width: tileWidth, height: tileHeight)
+            sprite.position = pointFor(column: orb.column, row: orb.row)
+            orbsLayer.addChild(sprite)
+            orb.sprite = sprite
+        }
+    }
     
     func orb(atColumn column: Int, row: Int) -> Orb? {
         precondition(column>=0 && column<numColumns)
