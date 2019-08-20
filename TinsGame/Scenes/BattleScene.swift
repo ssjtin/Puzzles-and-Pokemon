@@ -95,11 +95,15 @@ class BattleScene: SKScene {
     private func configureHeroCharacterWindows() {
 
         playerHud = MonstersHud(frameWidth: characterWindowWidth)
+        let position = CGPoint(x: -80, y: -150)
+        playerHud.position = position
         fightStageLayer.addChild(playerHud)
     }
     
     func configureEnemy() {
         enemyHud = EnemyHud(imageNamed: encounter.enemyMonsters.baseMonster.images.frontImage!)
+        let position = CGPoint(x: 100, y: 80)
+        enemyHud.position = position
         fightStageLayer.addChild(enemyHud)
     }
     

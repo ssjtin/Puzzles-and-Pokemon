@@ -33,7 +33,7 @@ class MonstersHud: SKNode {
         }
         
         addChild(healthBar)
-        healthBar.position = CGPoint(x: 0, y: 100)
+        healthBar.position = CGPoint(x: 0, y: 75)
         
     }
     

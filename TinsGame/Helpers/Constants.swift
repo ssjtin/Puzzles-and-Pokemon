@@ -8,7 +8,7 @@
 
 import UIKit
 
-let healthBarWidth: CGFloat = 280.0
+let healthBarWidth: CGFloat = 150.0
 
 let timeLimit: TimeInterval = 4.0
 

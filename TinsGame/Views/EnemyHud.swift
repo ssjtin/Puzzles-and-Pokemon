@@ -21,6 +21,10 @@ class EnemyHud: SKNode {
         addChild(enemySprite)
         addChild(attackLabel)
         addChild(healthBar)
+        
+        attackLabel.position = CGPoint(x: -50, y: -130)
+        enemySprite.position = CGPoint(x: 50, y: 0)
+        healthBar.position = CGPoint(x: -200, y: 50)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -28,7 +32,7 @@ class EnemyHud: SKNode {
     }
     
     func animateAttack(by pixels: CGFloat, completion: @escaping () -> ()) {
-        let origin = position
+        let origin = enemySprite.position
         let finishPoint = CGPoint(x: position.x - pixels, y: position.y - pixels)
         let toFinish = SKAction.move(to: finishPoint, duration: 0.2)
         let toOrigin = SKAction.move(to: origin, duration: 0.2)

@@ -61,7 +61,7 @@
 		8E98739C22E591B6003AA95A /* Array2D.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98739B22E591B6003AA95A /* Array2D.swift */; };
 		8E98739F22E59238003AA95A /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E98739E22E59238003AA95A /* Level.swift */; };
 		8E9873A122E5B961003AA95A /* Swap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E9873A022E5B961003AA95A /* Swap.swift */; };
-		8EFD651D22F7E66200087FC9 /* EnemySprite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD651C22F7E66200087FC9 /* EnemySprite.swift */; };
+		8EFD651D22F7E66200087FC9 /* EnemyHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD651C22F7E66200087FC9 /* EnemyHud.swift */; };
 		8EFD651F22F7ECD200087FC9 /* MonstersHud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8EFD651E22F7ECD200087FC9 /* MonstersHud.swift */; };
 		8EFD652122F82C4600087FC9 /* Pokemon encounter.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD652022F82C4600087FC9 /* Pokemon encounter.mp3 */; };
 		8EFD652322F82C4C00087FC9 /* Wild encounter song.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 8EFD652222F82C4C00087FC9 /* Wild encounter song.mp3 */; };
@@ -124,7 +124,7 @@
 		8E98739B22E591B6003AA95A /* Array2D.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array2D.swift; sourceTree = "<group>"; };
 		8E98739E22E59238003AA95A /* Level.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		8E9873A022E5B961003AA95A /* Swap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Swap.swift; sourceTree = "<group>"; };
-		8EFD651C22F7E66200087FC9 /* EnemySprite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemySprite.swift; sourceTree = "<group>"; };
+		8EFD651C22F7E66200087FC9 /* EnemyHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnemyHud.swift; sourceTree = "<group>"; };
 		8EFD651E22F7ECD200087FC9 /* MonstersHud.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonstersHud.swift; sourceTree = "<group>"; };
 		8EFD652022F82C4600087FC9 /* Pokemon encounter.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Pokemon encounter.mp3"; sourceTree = "<group>"; };
 		8EFD652222F82C4C00087FC9 /* Wild encounter song.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "Wild encounter song.mp3"; sourceTree = "<group>"; };
@@ -196,7 +196,7 @@
 			children = (
 				8E50FAED22EECC8700778138 /* TextLabelNode.swift */,
 				8E50FAEF22EED1F800778138 /* HealthBar.swift */,
-				8EFD651C22F7E66200087FC9 /* EnemySprite.swift */,
+				8EFD651C22F7E66200087FC9 /* EnemyHud.swift */,
 				8EFD651E22F7ECD200087FC9 /* MonstersHud.swift */,
 				8E50FAF122EEFD0C00778138 /* DirectionPad.swift */,
 				8E50FB0A22F13A2500778138 /* CharacterSprite.swift */,
@@ -452,7 +452,7 @@
 				8E50FAFC22F0378C00778138 /* MapModel.swift in Sources */,
 				8E89E90D22E8134E00CF9476 /* GameSound.swift in Sources */,
 				8E50FAF222EEFD0C00778138 /* DirectionPad.swift in Sources */,
-				8EFD651D22F7E66200087FC9 /* EnemySprite.swift in Sources */,
+				8EFD651D22F7E66200087FC9 /* EnemyHud.swift in Sources */,
 				8E98738322E48445003AA95A /* BattleScene.swift in Sources */,
 				8E50FB0B22F13A2500778138 /* CharacterSprite.swift in Sources */,
 				8E50FB0D22F1478E00778138 /* NPCSprite.swift in Sources */,
